@@ -43,5 +43,19 @@ DEL释放锁之前判断当前锁的持有者是不是自己(UUID识别)
 
 > SETNX的方案在master节点故障时候如果key没同步到slave并且选举slave为master之后，获取到了同资源的锁，不满足互斥性
 
+```
+Redlock就是为了解决主从异步复制在master节点故障后带来互斥性丢失的问题
+```
+
+(RedLock相关博客)[https://www.cnblogs.com/wwjj4811/p/15572204.html]
+
+### RedLock算法思想
+
+```
+多个Redis实例(无主从关系)加锁 n%2+1
+```
+
+
 ### 基于Redisson
+
 
